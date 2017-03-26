@@ -1,0 +1,4 @@
+<resources>
+    <string name="srn_drawer_open">Open</string>
+    <string name="srn_drawer_close">Close</string>
+</resources>
