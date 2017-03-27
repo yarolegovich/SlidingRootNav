@@ -1,4 +1,7 @@
 <resources>
     <string name="srn_drawer_open">Open</string>
     <string name="srn_drawer_close">Close</string>
+
+    <string name="srn_ex_no_menu_view">No view for menu provided. You must either call .withMenuView(View) or pass a valid resource id to .withMenuLayout(int)</string>
+    <string name="srn_ex_bad_content_view">Your content view must contain exactly one child. Make sure you call inject() after setContentView().</string>
 </resources>

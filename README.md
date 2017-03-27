@@ -7,7 +7,7 @@ The library is a DrawerLayout-like ViewGroup, where a "drawer" is hidden under t
 ## Gradle 
 Add this into your dependencies block.
 ```
-compile 'com.yarolegovich:sliding-root-nav:1.0.0'
+compile 'com.yarolegovich:sliding-root-nav:1.0.1'
 ```
 ## Sample
 Please see the [sample app](sample/src/main/java/com/yarolegovich/slidingrootnav/sample) for a library usage example.

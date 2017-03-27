@@ -15,8 +15,8 @@ import com.yarolegovich.slidingrootnav.callback.DragListener;
 import com.yarolegovich.slidingrootnav.callback.DragStateListener;
 import com.yarolegovich.slidingrootnav.transform.CompositeTransformation;
 import com.yarolegovich.slidingrootnav.transform.ElevationTransformation;
-import com.yarolegovich.slidingrootnav.transform.ScaleTransformation;
 import com.yarolegovich.slidingrootnav.transform.RootTransformation;
+import com.yarolegovich.slidingrootnav.transform.ScaleTransformation;
 import com.yarolegovich.slidingrootnav.transform.YTranslationTransformation;
 import com.yarolegovich.slidingrootnav.util.ActionBarToggleAdapter;
 import com.yarolegovich.slidingrootnav.util.DrawerListenerAdapter;
@@ -152,7 +152,7 @@ public class SlidingRootNavBuilder {
         return this;
     }
 
-    public SlidingRootNavBuilder addDragStateListeners(DragStateListener dragStateListener) {
+    public SlidingRootNavBuilder addDragStateListener(DragStateListener dragStateListener) {
         dragStateListeners.add(dragStateListener);
         return this;
     }
@@ -207,18 +207,20 @@ public class SlidingRootNavBuilder {
         if (contentView == null) {
             contentView = (ViewGroup) activity.findViewById(android.R.id.content);
         }
+        if (contentView.getChildCount() != 1) {
+            throw new IllegalStateException(activity.getString(R.string.srn_ex_bad_content_view));
+        }
         return contentView;
     }
 
     private View getMenuViewFor(SlidingRootNavLayout parent) {
         if (menuView == null) {
+            if (menuLayoutRes == 0) {
+                throw new IllegalStateException(activity.getString(R.string.srn_ex_no_menu_view));
+            }
             menuView = LayoutInflater.from(activity).inflate(menuLayoutRes, parent, false);
         }
         return menuView;
-    }
-
-    private int dpToPx(int dp) {
-        return Math.round(activity.getResources().getDisplayMetrics().density * dp);
     }
 
     private RootTransformation createCompositeTransformation() {
@@ -243,6 +245,10 @@ public class SlidingRootNavBuilder {
             sideNav.addDragListener(listenerAdapter);
             sideNav.addDragStateListener(listenerAdapter);
         }
+    }
+
+    private int dpToPx(int dp) {
+        return Math.round(activity.getResources().getDisplayMetrics().density * dp);
     }
 
 }
