@@ -179,7 +179,9 @@ public class SlidingRootNavBuilder {
         contentView.addView(newRoot);
 
         if (savedState == null) {
-            newRoot.openMenu(isMenuOpened);
+            if (isMenuOpened) {
+                newRoot.openMenu(false);
+            }
         }
 
         newRoot.setMenuLocked(isMenuLocked);

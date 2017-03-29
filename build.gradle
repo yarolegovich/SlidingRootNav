@@ -23,6 +23,6 @@ ext {
     groupId = 'com.yarolegovich'
     uploadName = 'SlidingRootNav'
     description = 'DrawerLayout-like ViewGroup, where a "drawer" is hidden under the content view, which can be shifted to make the drawer visible.'
-    publishVersion = '1.0.1'
+    publishVersion = '1.0.2'
     licences = ['Apache-2.0']
 }
