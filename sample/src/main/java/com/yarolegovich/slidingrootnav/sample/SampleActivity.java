@@ -50,6 +50,7 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
                 .withMenuOpened(true)
                 .withSavedState(savedInstanceState)
                 .withMenuLayout(R.layout.menu_left_drawer)
+                .withRootViewTouchableWhenMenuOpen(false)
                 .inject();
 
         screenIcons = loadScreenIcons();

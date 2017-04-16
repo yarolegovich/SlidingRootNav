@@ -42,6 +42,8 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
     private List<DragListener> dragListeners;
     private List<DragStateListener> dragStateListeners;
 
+    private boolean isTouchableWhenMenuOpened;
+
     public SlidingRootNavLayout(Context context) {
         super(context);
         dragListeners = new ArrayList<>();
@@ -54,6 +56,9 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if (!isTouchableWhenMenuOpened && !isMenuHidden()){
+            return true;
+        }
         return !isMenuLocked && dragHelper.shouldInterceptTouchEvent(ev);
     }
 
@@ -134,6 +139,10 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
     @Override
     public void setMenuLocked(boolean locked) {
         isMenuLocked = locked;
+    }
+
+    public void setTouchableWhenMenuOpened(boolean touchable){
+        isTouchableWhenMenuOpened = touchable;
     }
 
     public void setRootView(View view) {

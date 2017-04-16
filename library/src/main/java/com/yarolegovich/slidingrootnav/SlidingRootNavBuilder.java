@@ -59,6 +59,8 @@ public class SlidingRootNavBuilder {
 
     private boolean isMenuLocked;
 
+    private boolean isTouchableWhenMenuOpened;
+
     private Bundle savedState;
 
     public SlidingRootNavBuilder(Activity activity) {
@@ -142,6 +144,11 @@ public class SlidingRootNavBuilder {
         return this;
     }
 
+    public SlidingRootNavBuilder withRootViewTouchableWhenMenuOpen(boolean isTouchable){
+        isTouchableWhenMenuOpened = isTouchable;
+        return this;
+    }
+
     public SlidingRootNavBuilder addRootTransformation(RootTransformation transformation) {
         transformations.add(transformation);
         return this;
@@ -184,6 +191,7 @@ public class SlidingRootNavBuilder {
             }
         }
 
+        newRoot.setTouchableWhenMenuOpened(isTouchableWhenMenuOpened);
         newRoot.setMenuLocked(isMenuLocked);
 
         return newRoot;

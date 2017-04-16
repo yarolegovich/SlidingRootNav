@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yarolegovich.slidingrootnav.sample.R;
 
@@ -38,5 +39,11 @@ public class CenteredTextFragment extends Fragment {
         String text = getArguments().getString(EXTRA_TEXT);
         TextView textView = (TextView) view.findViewById(R.id.text);
         textView.setText(text);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"Clicked",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
