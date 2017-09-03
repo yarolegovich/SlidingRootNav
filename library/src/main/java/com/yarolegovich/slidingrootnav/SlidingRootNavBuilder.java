@@ -59,6 +59,8 @@ public class SlidingRootNavBuilder {
 
     private boolean isMenuLocked;
 
+    private boolean isContentClickableWhenMenuOpened;
+
     private Bundle savedState;
 
     public SlidingRootNavBuilder(Activity activity) {
@@ -68,6 +70,7 @@ public class SlidingRootNavBuilder {
         this.dragStateListeners = new ArrayList<>();
         this.gravity = SlideGravity.LEFT;
         this.dragDistance = dpToPx(DEFAULT_DRAG_DIST_DP);
+        this.isContentClickableWhenMenuOpened = true;
     }
 
     public SlidingRootNavBuilder withMenuView(View view) {
@@ -107,6 +110,11 @@ public class SlidingRootNavBuilder {
 
     public SlidingRootNavBuilder withMenuOpened(boolean opened) {
         isMenuOpened = opened;
+        return this;
+    }
+
+    public SlidingRootNavBuilder withContentClickableWhenMenuOpened(boolean clickable) {
+        isContentClickableWhenMenuOpened = clickable;
         return this;
     }
 
@@ -196,6 +204,7 @@ public class SlidingRootNavBuilder {
         newRoot.setMaxDragDistance(dragDistance);
         newRoot.setGravity(gravity);
         newRoot.setRootView(oldRoot);
+        newRoot.setContentClickableWhenMenuOpened(isContentClickableWhenMenuOpened);
         for (DragListener l : dragListeners) {
             newRoot.addDragListener(l);
         }

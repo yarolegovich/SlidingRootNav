@@ -8,6 +8,8 @@ public interface SlidingRootNav {
 
     boolean isMenuHidden();
 
+    boolean isMenuOpened();
+
     boolean isMenuLocked();
 
     void closeMenu();
