@@ -20,7 +20,7 @@ public class HiddenMenuClickConsumer extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return menuHost.isMenuHidden();
+        return menuHost.isMenuClosed();
     }
 
     public void setMenuHost(SlidingRootNavLayout layout) {

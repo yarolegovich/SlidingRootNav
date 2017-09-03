@@ -29,14 +29,14 @@ public class ActionBarToggleAdapter extends DrawerLayout {
 
     @Override
     public boolean isDrawerVisible(int drawerGravity) {
-        return !adaptee.isMenuHidden();
+        return !adaptee.isMenuClosed();
     }
 
     @Override
     public int getDrawerLockMode(int edgeGravity) {
-        if (adaptee.isMenuLocked() && adaptee.isMenuHidden()) {
+        if (adaptee.isMenuLocked() && adaptee.isMenuClosed()) {
             return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
-        } else if (adaptee.isMenuLocked() && !adaptee.isMenuHidden()) {
+        } else if (adaptee.isMenuLocked() && !adaptee.isMenuClosed()) {
             return DrawerLayout.LOCK_MODE_LOCKED_OPEN;
         } else {
             return DrawerLayout.LOCK_MODE_UNLOCKED;

@@ -108,7 +108,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
     }
 
     @Override
-    public boolean isMenuHidden() {
+    public boolean isMenuClosed() {
         return isMenuHidden;
     }
 
@@ -253,7 +253,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
             }
             boolean isOnEdge = edgeTouched;
             edgeTouched = false;
-            if (isMenuHidden()) {
+            if (isMenuClosed()) {
                 return child == rootView && isOnEdge;
             } else {
                 if (child != rootView) {
