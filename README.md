@@ -7,7 +7,7 @@ The library is a DrawerLayout-like ViewGroup, where a "drawer" is hidden under t
 ## Gradle 
 Add this into your dependencies block.
 ```
-compile 'com.yarolegovich:sliding-root-nav:1.0.2'
+compile 'com.yarolegovich:sliding-root-nav:1.1.0'
 ```
 ## Sample
 Please see the [sample app](sample/src/main/java/com/yarolegovich/slidingrootnav/sample) for a library usage example.
@@ -45,13 +45,14 @@ new SlidingRootNavBuilder(this)
   .withMenuLocked(false) //If true, a user can't open or close the menu. Default == false.
   .withGravity(SlideGravity.LEFT) //If LEFT you can swipe a menu from left to right, if RIGHT - the direction is opposite. 
   .withSavedState(savedInstanceState) //If you call the method, layout will restore its opened/closed state
-  .inject();
+  .withContentClickableWhenMenuOpened(isClickable) //Pretty self-descriptive. Builder Default == true
 ```
 #### Controling the layout
 A call to `inject()` returns you an interface for controlling the layout.
 ```java
 public interface SlidingRootNav {
-    boolean isMenuHidden();
+    boolean isMenuClosed();
+    boolean isMenuOpened();
     boolean isMenuLocked();
     void closeMenu();
     void closeMenu(boolean animated);
