@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="sans-serif-light"
+        android:clickable="true"
         android:textColor="?android:textColorSecondary"
         android:textSize="36sp" />
 

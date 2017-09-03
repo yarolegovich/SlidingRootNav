@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yarolegovich.slidingrootnav.sample.R;
 
@@ -35,8 +36,13 @@ public class CenteredTextFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        String text = getArguments().getString(EXTRA_TEXT);
-        TextView textView = (TextView) view.findViewById(R.id.text);
+        final String text = getArguments().getString(EXTRA_TEXT);
+        TextView textView = view.findViewById(R.id.text);
         textView.setText(text);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                Toast.makeText(v.getContext(), text, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 import com.yarolegovich.slidingrootnav.sample.menu.DrawerAdapter;
 import com.yarolegovich.slidingrootnav.sample.menu.DrawerItem;
@@ -37,17 +38,20 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
     private String[] screenTitles;
     private Drawable[] screenIcons;
 
+    private SlidingRootNav slidingRootNav;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        new SlidingRootNavBuilder(this)
+        slidingRootNav = new SlidingRootNavBuilder(this)
                 .withToolbarMenuToggle(toolbar)
-                .withMenuOpened(true)
+                .withMenuOpened(false)
+                .withContentClickableWhenMenuOpened(false)
                 .withSavedState(savedInstanceState)
                 .withMenuLayout(R.layout.menu_left_drawer)
                 .inject();
@@ -64,7 +68,7 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
                 createItemFor(POS_LOGOUT)));
         adapter.setListener(this);
 
-        RecyclerView list = (RecyclerView) findViewById(R.id.list);
+        RecyclerView list = findViewById(R.id.list);
         list.setNestedScrollingEnabled(false);
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(adapter);
@@ -77,6 +81,7 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
         if (position == POS_LOGOUT) {
             finish();
         }
+        slidingRootNav.closeMenu();
         Fragment selectedScreen = CenteredTextFragment.createFor(screenTitles[position]);
         showFragment(selectedScreen);
     }
