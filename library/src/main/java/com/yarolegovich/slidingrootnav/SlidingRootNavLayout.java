@@ -28,6 +28,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
     private final float FLING_MIN_VELOCITY;
 
     private boolean isMenuLocked;
+    private boolean isMenuHidden;
 
     private RootTransformation rootTransformation;
     private View rootView;
@@ -50,6 +51,9 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
         FLING_MIN_VELOCITY = ViewConfiguration.get(context).getScaledMinimumFlingVelocity();
 
         dragHelper = ViewDragHelper.create(this, new ViewDragCallback());
+
+        dragProgress = 0f;
+        isMenuHidden = true;
     }
 
     @Override
@@ -84,6 +88,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
     }
 
     private void changeMenuVisibility(boolean animated, float newDragProgress) {
+        isMenuHidden = calculateIsMenuHidden();
         if (animated) {
             int left = positionHelper.getLeftToSettle(newDragProgress, maxDragDistance);
             if (dragHelper.smoothSlideViewTo(rootView, left, rootView.getTop())) {
@@ -98,7 +103,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
 
     @Override
     public boolean isMenuHidden() {
-        return dragProgress == 0;
+        return isMenuHidden;
     }
 
     @Override
@@ -206,6 +211,10 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
         changeMenuVisibility(false, savedState.getInt(EXTRA_IS_OPENED, 0));
     }
 
+    private boolean calculateIsMenuHidden() {
+        return dragProgress == 0f;
+    }
+
     private class ViewDragCallback extends ViewDragHelper.Callback {
 
         private boolean edgeTouched;
@@ -250,7 +259,8 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
             if (dragState == ViewDragHelper.STATE_IDLE && state != ViewDragHelper.STATE_IDLE) {
                 notifyDragStart();
             } else if (dragState != ViewDragHelper.STATE_IDLE && state == ViewDragHelper.STATE_IDLE) {
-                notifyDragEnd(!isMenuHidden());
+                isMenuHidden = calculateIsMenuHidden();
+                notifyDragEnd(!isMenuHidden);
             }
             dragState = state;
         }
