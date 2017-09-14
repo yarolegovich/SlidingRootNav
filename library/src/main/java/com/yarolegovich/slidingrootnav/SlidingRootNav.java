@@ -1,5 +1,7 @@
 package com.yarolegovich.slidingrootnav;
 
+import com.yarolegovich.slidingrootnav.util.BadgeDrawerToggle;
+
 /**
  * Created by yarolegovich on 25.03.2017.
  */
@@ -24,4 +26,5 @@ public interface SlidingRootNav {
 
     SlidingRootNavLayout getLayout();
 
+    BadgeDrawerToggle getBadgeDrawerToggle();
 }

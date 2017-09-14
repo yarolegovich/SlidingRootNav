@@ -15,11 +15,11 @@ import android.support.v7.widget.Toolbar;
 
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
+import com.yarolegovich.slidingrootnav.sample.fragment.CenteredTextFragment;
 import com.yarolegovich.slidingrootnav.sample.menu.DrawerAdapter;
 import com.yarolegovich.slidingrootnav.sample.menu.DrawerItem;
 import com.yarolegovich.slidingrootnav.sample.menu.SimpleItem;
 import com.yarolegovich.slidingrootnav.sample.menu.SpaceItem;
-import com.yarolegovich.slidingrootnav.sample.fragment.CenteredTextFragment;
 
 import java.util.Arrays;
 
@@ -84,6 +84,9 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
         slidingRootNav.closeMenu();
         Fragment selectedScreen = CenteredTextFragment.createFor(screenTitles[position]);
         showFragment(selectedScreen);
+
+        slidingRootNav.getBadgeDrawerToggle().setBadgeEnabled(position != POS_DASHBOARD);
+        slidingRootNav.getBadgeDrawerToggle().setBadgeText(String.valueOf(position));
     }
 
     private void showFragment(Fragment fragment) {

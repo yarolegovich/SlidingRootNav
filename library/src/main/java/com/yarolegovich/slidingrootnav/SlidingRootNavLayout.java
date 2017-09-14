@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -14,6 +15,7 @@ import android.widget.FrameLayout;
 import com.yarolegovich.slidingrootnav.callback.DragListener;
 import com.yarolegovich.slidingrootnav.callback.DragStateListener;
 import com.yarolegovich.slidingrootnav.transform.RootTransformation;
+import com.yarolegovich.slidingrootnav.util.BadgeDrawerToggle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +49,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
 
     private List<DragListener> dragListeners;
     private List<DragStateListener> dragStateListeners;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
 
     public SlidingRootNavLayout(Context context) {
         super(context);
@@ -64,8 +67,8 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         return (!isMenuLocked
-            && dragHelper.shouldInterceptTouchEvent(ev))
-            || shouldBlockClick(ev);
+                && dragHelper.shouldInterceptTouchEvent(ev))
+                || shouldBlockClick(ev);
     }
 
     @Override
@@ -113,13 +116,23 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
         return isMenuHidden;
     }
 
-    @Override public boolean isMenuOpened() {
+    @Override
+    public boolean isMenuOpened() {
         return !isMenuHidden;
     }
 
     @Override
     public SlidingRootNavLayout getLayout() {
         return this;
+    }
+
+    @Override
+    public BadgeDrawerToggle getBadgeDrawerToggle() {
+        if (actionBarDrawerToggle instanceof BadgeDrawerToggle) {
+            return (BadgeDrawerToggle) actionBarDrawerToggle;
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -244,6 +257,10 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
 
     private boolean calculateIsMenuHidden() {
         return dragProgress == 0f;
+    }
+
+    public void setActionBarDrawerToggle(BadgeDrawerToggle actionBarDrawerToggle) {
+        this.actionBarDrawerToggle = actionBarDrawerToggle;
     }
 
     private class ViewDragCallback extends ViewDragHelper.Callback {

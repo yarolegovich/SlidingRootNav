@@ -19,6 +19,7 @@ import com.yarolegovich.slidingrootnav.transform.RootTransformation;
 import com.yarolegovich.slidingrootnav.transform.ScaleTransformation;
 import com.yarolegovich.slidingrootnav.transform.YTranslationTransformation;
 import com.yarolegovich.slidingrootnav.util.ActionBarToggleAdapter;
+import com.yarolegovich.slidingrootnav.util.BadgeDrawerToggle;
 import com.yarolegovich.slidingrootnav.util.DrawerListenerAdapter;
 import com.yarolegovich.slidingrootnav.util.HiddenMenuClickConsumer;
 
@@ -248,9 +249,10 @@ public class SlidingRootNavBuilder {
         if (toolbar != null) {
             ActionBarToggleAdapter dlAdapter = new ActionBarToggleAdapter(activity);
             dlAdapter.setAdaptee(sideNav);
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(activity, dlAdapter, toolbar,
+            BadgeDrawerToggle toggle = new BadgeDrawerToggle(activity, dlAdapter, toolbar,
                     R.string.srn_drawer_open,
                     R.string.srn_drawer_close);
+            sideNav.setActionBarDrawerToggle(toggle);
             toggle.syncState();
             DrawerListenerAdapter listenerAdapter = new DrawerListenerAdapter(toggle, drawer);
             sideNav.addDragListener(listenerAdapter);
