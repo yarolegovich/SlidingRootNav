@@ -25,6 +25,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
 
     private static final String EXTRA_IS_OPENED = "extra_is_opened";
     private static final String EXTRA_SUPER = "extra_super";
+    private static final String EXTRA_SHOULD_BLOCK_CLICK = "extra_should_block_click";
 
     private static final Rect tempRect = new Rect();
 
@@ -228,6 +229,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
         Bundle savedState = new Bundle();
         savedState.putParcelable(EXTRA_SUPER, super.onSaveInstanceState());
         savedState.putInt(EXTRA_IS_OPENED, dragProgress > 0.5 ? 1 : 0);
+        savedState.putBoolean(EXTRA_SHOULD_BLOCK_CLICK, isContentClickableWhenMenuOpened);
         return savedState;
     }
 
@@ -236,6 +238,8 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
         Bundle savedState = (Bundle) state;
         super.onRestoreInstanceState(savedState.getParcelable(EXTRA_SUPER));
         changeMenuVisibility(false, savedState.getInt(EXTRA_IS_OPENED, 0));
+        isMenuHidden = calculateIsMenuHidden();
+        isContentClickableWhenMenuOpened = savedState.getBoolean(EXTRA_SHOULD_BLOCK_CLICK);
     }
 
     private boolean calculateIsMenuHidden() {
