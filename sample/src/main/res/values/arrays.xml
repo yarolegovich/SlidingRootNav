@@ -6,7 +6,7 @@
         <item>My Account</item>
         <item>Messages</item>
         <item>Cart</item>
-        <item />
+        <item></item>
         <item>Log Out</item>
     </string-array>
 
