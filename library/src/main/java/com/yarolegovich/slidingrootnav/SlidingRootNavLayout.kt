@@ -19,6 +19,7 @@ import java.util.ArrayList
 
 /**
  * Created by yarolegovich on 24.03.2017.
+ * Edited by Mehdi on 27.02.2019
  */
 class SlidingRootNavLayout(context: Context) : FrameLayout(context), SlidingRootNav {
 

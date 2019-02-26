@@ -14,6 +14,7 @@ android {
 
 dependencies {
     implementation "androidx.appcompat:appcompat:$supportLibVersion"
+    implementation "androidx.annotation:annotation:1.0.1"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
@@ -29,3 +30,4 @@ publish {
 repositories {
     mavenCentral()
 }
+

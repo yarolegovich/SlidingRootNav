@@ -2,9 +2,10 @@ package com.yarolegovich.slidingrootnav
 
 /**
  * Created by yarolegovich on 25.03.2017.
+ * Edited by Mehdi on 27.02.2019
  */
 
-public interface SlidingRootNav {
+interface SlidingRootNav {
 
     val isMenuClosed: Boolean
 

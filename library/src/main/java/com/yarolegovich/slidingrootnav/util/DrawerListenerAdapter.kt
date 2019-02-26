@@ -8,6 +8,7 @@ import com.yarolegovich.slidingrootnav.callback.DragStateListener
 
 /**
  * Created by yarolegovich on 26.03.2017.
+ * Edited by Mehdi on 27.02.2019
  */
 
 class DrawerListenerAdapter(private val adaptee: DrawerLayout.DrawerListener, private val drawer: View) : DragListener, DragStateListener {

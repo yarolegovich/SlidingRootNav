@@ -27,6 +27,7 @@ import java.util.Arrays
 
 /**
  * Created by yarolegovich on 24.03.2017.
+ * Edited by Mehdi on 27.02.2019
  */
 
 class SlidingRootNavBuilder(private val activity: Activity) {

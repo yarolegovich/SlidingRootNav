@@ -8,6 +8,7 @@ import com.yarolegovich.slidingrootnav.SlidingRootNavLayout
 
 /**
  * Created by yarolegovich on 26.03.2017.
+ * Edited by Mehdi on 27.02.2019
  */
 
 class HiddenMenuClickConsumer(context: Context) : View(context) {

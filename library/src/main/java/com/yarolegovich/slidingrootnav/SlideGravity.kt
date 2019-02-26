@@ -4,6 +4,7 @@ import androidx.customview.widget.ViewDragHelper
 
 /**
  * Created by yarolegovich on 25.03.2017.
+ * Edited by Mehdi on 27.02.2019
  */
 
 enum class SlideGravity {
