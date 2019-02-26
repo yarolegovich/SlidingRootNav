@@ -48,13 +48,17 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        slidingRootNav = new SlidingRootNavBuilder(this)
+        SlidingRootNavBuilder slidingRootNavBuilder = new SlidingRootNavBuilder(this)
                 .withToolbarMenuToggle(toolbar)
                 .withMenuOpened(false)
                 .withContentClickableWhenMenuOpened(false)
-                .withSavedState(savedInstanceState)
-                .withMenuLayout(R.layout.menu_left_drawer)
-                .inject();
+                .withMenuLayout(R.layout.menu_left_drawer);
+
+        if (savedInstanceState != null) {
+            slidingRootNavBuilder.withSavedState(savedInstanceState);
+        }
+
+        slidingRootNav = slidingRootNavBuilder.inject();
 
         screenIcons = loadScreenIcons();
         screenTitles = loadScreenTitles();
