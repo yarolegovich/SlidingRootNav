@@ -5,6 +5,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
     }
 }
 
@@ -20,13 +21,6 @@ task clean(type: Delete) {
 }
 
 ext {
-    userOrg = 'yarolegovich'
-    groupId = 'com.yarolegovich'
-    uploadName = 'SlidingRootNav'
-    description = 'DrawerLayout-like ViewGroup, where a "drawer" is hidden under the content view, which can be shifted to make the drawer visible.'
-    publishVersion = '1.1.0'
-    licences = ['Apache-2.0']
-
     compileSdkVersion = 29
     buildToolsVersion = '29.0.2'
     minSdkVersion = 16
