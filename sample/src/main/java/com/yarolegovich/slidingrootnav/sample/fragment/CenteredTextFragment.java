@@ -1,13 +1,14 @@
 package com.yarolegovich.slidingrootnav.sample.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.yarolegovich.slidingrootnav.sample.R;
 
@@ -36,7 +37,8 @@ public class CenteredTextFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        final String text = getArguments().getString(EXTRA_TEXT);
+        Bundle args = getArguments();
+        final String text = args != null ? args.getString(EXTRA_TEXT) : "";
         TextView textView = view.findViewById(R.id.text);
         textView.setText(text);
         textView.setOnClickListener(new View.OnClickListener() {

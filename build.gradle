@@ -1,10 +1,10 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'com.novoda:bintray-release:0.4.0'
+        classpath 'com.android.tools.build:gradle:4.0.1'
     }
 }
 
@@ -27,10 +27,15 @@ ext {
     publishVersion = '1.1.0'
     licences = ['Apache-2.0']
 
-    compileSdkVersion = 26
-    buildToolsVersion = '26.0.1'
+    compileSdkVersion = 29
+    buildToolsVersion = '29.0.2'
     minSdkVersion = 16
-    targetSdkVersion = 25
+    targetSdkVersion = 29
 
-    supportLibVersion = '26.0.0'
+    deps = [
+            recycler      : 'androidx.recyclerview:recyclerview:1.0.0',
+            designSupport : 'com.google.android.material:material:1.0.0',
+            annotations   : 'androidx.annotation:annotation:1.1.0',
+            androidxCompat: 'androidx.appcompat:appcompat:1.1.0',
+    ]
 }

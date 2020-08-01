@@ -1,5 +1,6 @@
 package com.yarolegovich.slidingrootnav.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,6 +20,7 @@ public class HiddenMenuClickConsumer extends View {
     }
 
     @Override
+    @SuppressLint("ClickableViewAccessibility")
     public boolean onTouchEvent(MotionEvent event) {
         return menuHost.isMenuClosed();
     }

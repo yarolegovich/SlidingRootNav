@@ -10,6 +10,7 @@
         android:layout_gravity="center"
         android:fontFamily="sans-serif-light"
         android:clickable="true"
+        android:focusable="true"
         android:textColor="?android:textColorSecondary"
         android:textSize="36sp" />
 

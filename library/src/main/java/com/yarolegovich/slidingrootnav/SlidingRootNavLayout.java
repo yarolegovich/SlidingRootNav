@@ -1,15 +1,18 @@
 package com.yarolegovich.slidingrootnav;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.ViewDragHelper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
+
+import androidx.annotation.NonNull;
+import androidx.core.view.ViewCompat;
+import androidx.customview.widget.ViewDragHelper;
 
 import com.yarolegovich.slidingrootnav.callback.DragListener;
 import com.yarolegovich.slidingrootnav.callback.DragStateListener;
@@ -69,6 +72,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
     }
 
     @Override
+    @SuppressLint("ClickableViewAccessibility")
     public boolean onTouchEvent(MotionEvent event) {
         dragHelper.processTouchEvent(event);
         return true;
@@ -199,9 +203,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
         }
         if (rootView != null && isMenuOpened()) {
             rootView.getHitRect(tempRect);
-            if (tempRect.contains((int) event.getX(), (int) event.getY())) {
-                return true;
-            }
+            return tempRect.contains((int) event.getX(), (int) event.getY());
         }
         return false;
     }
@@ -251,7 +253,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
         private boolean edgeTouched;
 
         @Override
-        public boolean tryCaptureView(View child, int pointerId) {
+        public boolean tryCaptureView(@NonNull View child, int pointerId) {
             if (isMenuLocked) {
                 return false;
             }
@@ -269,7 +271,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
         }
 
         @Override
-        public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
+        public void onViewPositionChanged(@NonNull View changedView, int left, int top, int dx, int dy) {
             dragProgress = positionHelper.getDragProgress(left, maxDragDistance);
             rootTransformation.transform(dragProgress, rootView);
             notifyDrag();
@@ -277,7 +279,7 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
         }
 
         @Override
-        public void onViewReleased(View releasedChild, float xvel, float yvel) {
+        public void onViewReleased(@NonNull View releasedChild, float xvel, float yvel) {
             int left = Math.abs(xvel) < FLING_MIN_VELOCITY ?
                     positionHelper.getLeftToSettle(dragProgress, maxDragDistance) :
                     positionHelper.getLeftAfterFling(xvel, maxDragDistance);
@@ -302,12 +304,12 @@ public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav 
         }
 
         @Override
-        public int getViewHorizontalDragRange(View child) {
+        public int getViewHorizontalDragRange(@NonNull View child) {
             return child == rootView ? maxDragDistance : 0;
         }
 
         @Override
-        public int clampViewPositionHorizontal(View child, int left, int dx) {
+        public int clampViewPositionHorizontal(@NonNull View child, int left, int dx) {
             return positionHelper.clampViewPosition(left, maxDragDistance);
         }
     }

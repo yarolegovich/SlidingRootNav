@@ -20,9 +20,10 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:$supportLibVersion"
-    compile "com.android.support:design:$supportLibVersion"
-    compile "com.android.support:recyclerview-v7:$supportLibVersion"
+    implementation deps.annotations
+    implementation deps.androidxCompat
+    implementation deps.designSupport
+    implementation deps.recycler
 
-    compile project(':library')
+    implementation project(':library')
 }

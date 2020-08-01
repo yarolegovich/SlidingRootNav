@@ -1,6 +1,7 @@
 package com.yarolegovich.slidingrootnav;
 
-import android.support.v4.widget.ViewDragHelper;
+
+import androidx.customview.widget.ViewDragHelper;
 
 /**
  * Created by yarolegovich on 25.03.2017.

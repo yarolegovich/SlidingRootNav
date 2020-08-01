@@ -1,7 +1,8 @@
 package com.yarolegovich.slidingrootnav.util;
 
-import android.support.v4.widget.DrawerLayout;
 import android.view.View;
+
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.yarolegovich.slidingrootnav.callback.DragListener;
 import com.yarolegovich.slidingrootnav.callback.DragStateListener;
