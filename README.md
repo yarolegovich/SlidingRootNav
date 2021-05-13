@@ -6,7 +6,7 @@ The library is a DrawerLayout-like ViewGroup, where a "drawer" is hidden under t
 
 ## Installation 
 Gradle is the only supported build configuration, so just add the dependency to your project ``Build.gradle`` file
-```
+```java
 dependencies {
   implementation 'com.yarolegovich:sliding-root-nav:1.1.1'
 }
