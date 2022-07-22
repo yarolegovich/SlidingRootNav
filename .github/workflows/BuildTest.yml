@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: test-reports
-          path: 'sample/build/reports/tests/'
+          path: '**/build/reports/tests/'
 
   android_test_job:
     name: Android Tests
@@ -124,5 +124,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
-          name: Folder-ResideMenu
+          name: SlidingRootNav
           path: sample/build/outputs/apk/debug/**.apk
