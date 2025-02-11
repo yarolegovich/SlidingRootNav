@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--app main color-->
+    <color name="color_light_primary">#0d6efd</color>
+    <color name="color_light_status_bar">#0D61DE</color>
+    <color name="color_light_accent">#217AFD</color>
+    <color name="color_light_background">#FFFFFF</color>
+    <color name="color_navigation_drawer_selected_item">#D5E5E5</color>
+    <color name="album_art_image_border_color">#FFFFFF</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_bg_tint">#E1062D66</color>
+
+    <color name="colorPrimary">#E91E63</color>
+    <color name="colorPrimaryDark">#CE1353</color>
+    <color name="colorAccent">#FFFFFF</color>
+
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="textColorSecondary">#FFFFFF</color>
+
+</resources>

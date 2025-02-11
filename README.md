@@ -2,15 +2,15 @@
 
 The library is a DrawerLayout-like ViewGroup, where a "drawer" is hidden under the content view, which can be shifted to make the drawer visible. It doesn't provide you with a drawer builder.
 
-![GifSample](art/sample.gif)
+![GifSample](art/demo.gif)
 
 ## Gradle 
 Add this into your dependencies block.
 ```
-compile 'com.yarolegovich:sliding-root-nav:1.1.1'
+implementation 'com.github.xposed73:SlidingRootNav:1.0.0'
 ```
-## Sample
-Please see the [sample app](sample/src/main/java/com/yarolegovich/slidingrootnav/sample) for a library usage example.
+## Kotlin DSL (New)
+![GifSample](art/tutorial.gif)
 
 ## Wiki
 #### Usage:
@@ -87,24 +87,4 @@ public interface DragStateListener {
 ```java
 DrawerListenerAdapter adapter = new DrawerListenerAdapter(yourDrawerListener, viewToPassAsDrawer);
 builder.addDragListener(listenerAdapter).addDragStateListener(listenerAdapter);
-```
-
-## Special thanks
-Thanks to [Tayisiya Yurkiv](https://www.behance.net/yurkivt) for a beautiful GIF.
-
-## License
-```
-Copyright 2017 Yaroslav Shevchuk
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
 ```

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="BaseTheme" />
+
+    <style name="BaseTheme" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_light_primary</item>
+        <item name="colorPrimaryDark">@color/color_light_status_bar</item>
+        <item name="colorAccent">@color/color_light_accent</item>
+        <item name="actionBarItemBackground">@color/color_light_status_bar</item>
+        <item name="android:windowBackground">@color/color_light_primary</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="colorOnSurface">@color/color_light_primary</item>
+        <item name="colorSecondaryContainer">@color/color_navigation_drawer_selected_item</item>
+        <item name="colorOnSecondaryContainer">@color/color_light_primary</item>
+        <item name="popupMenuBackground">@color/color_light_primary</item>
+    </style>
+
+</resources>
